@@ -1,0 +1,2545 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20193.20.0220.2026                               -->
+<workbook original-version='18.1' source-build='2019.3.5 (20193.20.0220.2026)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts ignorable='true' predowngraded='true' />
+    <ISO8601PeriodTypes predowngraded='true' />
+    <SheetIdentifierTracking ignorable='true' predowngraded='true' />
+    <WindowsPersistSimpleIdentifiers />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='Offset' datatype='real' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='0.10000000000000853'>
+        <calculation class='tableau' formula='0.10000000000000853' />
+        <range granularity='0.10000000000000001' max='100.0' min='-100.0' />
+      </column>
+    </datasource>
+    <datasource caption='Custom SQL Query (RptFin)' inline='true' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='WestBIS-RPT.cable.comcast.com' name='sqlserver.1r3jz1r15crb8m1ctpv2413sssm9'>
+            <connection authentication='sspi' class='sqlserver' dbname='RptFin' minimum-driver-version='SQL Server Native Client 10.0' odbc-native-protocol='yes' one-time-sql='' server='WestBIS-RPT.cable.comcast.com' />
+          </named-connection>
+        </named-connections>
+        <relation connection='sqlserver.1r3jz1r15crb8m1ctpv2413sssm9' name='Custom SQL Query' type='text'>SELECT CASE WHEN E.[REGION] = &apos;CALIFORNIA&apos; THEN &apos;California&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[REGION] = &apos;HOUSTON&apos; THEN &apos;Houston&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[REGION] = &apos;MOUNTAIN WEST&apos; THEN &apos;Mountain West&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[REGION] = &apos;PORTLAND&apos; THEN &apos;Portland&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[REGION] = &apos;SEATTLE&apos; THEN &apos;Seattle&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[REGION] = &apos;TWIN CITIES&apos; THEN &apos;Twin Cities&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[REGION] = &apos;WEST DIVISION&apos; THEN &apos;West Division&apos;&#13;&#10;&#9;&#9;&#9;ELSE NULL END AS [REGION]&#13;&#10;&#9;,CAST(E.[ORDER_COMPLETE_DTE] AS DATE) AS DATE&#13;&#10;&#9;,CASE WHEN E.[PROD_NAME] IN (&apos;BUSINESS INTERNET&apos;,&apos;BUSINESS CLASS ETHERNET - EDI&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Data&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;BUSINESS INTERNET&apos;,&apos;BUSINESS CLASS ETHERNET - EDI&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Data&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VOICE&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Voice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VOICE&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Voice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PRIVATE&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] IN (&apos;NDW&apos;,&apos;UCBL&apos;) THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PUBLIC&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;UCBL&apos; THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PRIVATE&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] IN (&apos;NDW&apos;,&apos;UCBL&apos;) THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PUBLIC&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;UCBL&apos; THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;SMART OFFICE - COMMERCIAL&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;WODM&apos; THEN &apos;SmartOffice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;SMART OFFICE - COMMERCIAL&apos; AND E.[ORD_TYPE] IN (&apos;VOL&apos;,&apos;NOP&apos;) AND E.[DATA_SOURCE] = &apos;WODM&apos; THEN &apos;SmartOffice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;CONNECTION PRO SERVICE FEE - COMMERCIAL&apos;,&apos;SV CONNECTION PRO&apos;,&apos;CONNECTION PRO&apos;,&apos;CONNECTION PRO - SINGLEVIEW&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connection Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;CONNECTION PRO SERVICE FEE - COMMERCIAL&apos;,&apos;SV CONNECTION PRO&apos;,&apos;CONNECTION PRO&apos;,&apos;CONNECTION PRO - SINGLEVIEW&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connection Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SV WIFI PRO&apos;,&apos;LB WIFI PRO&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;WiFi Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SV WIFI PRO&apos;,&apos;LB WIFI PRO&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;WiFi Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SECURITYEDGE - COMMERCIAL&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;SecurityEdge&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SECURITYEDGE - COMMERCIAL&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;SecurityEdge&apos;&#13;&#10;&#9;&#9;&#9;ELSE NULL END AS [PRODUCT]&#13;&#10;&#9;,CASE WHEN E.[PROD_NAME] IN (&apos;BUSINESS INTERNET&apos;,&apos;BUSINESS CLASS ETHERNET - EDI&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;BUSINESS INTERNET&apos;,&apos;BUSINESS CLASS ETHERNET - EDI&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VOICE&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VOICE&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PRIVATE&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] IN (&apos;NDW&apos;,&apos;UCBL&apos;) THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PUBLIC&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;UCBL&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PRIVATE&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] IN (&apos;NDW&apos;,&apos;UCBL&apos;) THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PUBLIC&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;UCBL&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;SMART OFFICE - COMMERCIAL&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;WODM&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;SMART OFFICE - COMMERCIAL&apos; AND E.[ORD_TYPE] IN (&apos;VOL&apos;,&apos;NOP&apos;) AND E.[DATA_SOURCE] = &apos;WODM&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;CONNECTION PRO SERVICE FEE - COMMERCIAL&apos;,&apos;SV CONNECTION PRO&apos;,&apos;CONNECTION PRO&apos;,&apos;CONNECTION PRO - SINGLEVIEW&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;CONNECTION PRO SERVICE FEE - COMMERCIAL&apos;,&apos;SV CONNECTION PRO&apos;,&apos;CONNECTION PRO&apos;,&apos;CONNECTION PRO - SINGLEVIEW&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SV WIFI PRO&apos;,&apos;LB WIFI PRO&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SV WIFI PRO&apos;,&apos;LB WIFI PRO&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SECURITYEDGE - COMMERCIAL&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SECURITYEDGE - COMMERCIAL&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;ELSE NULL END AS [ACTION]&#13;&#10;&#9;,SUM(E.[NET_QTY]) AS SUM&#13;&#10;FROM [RptFin].[ext].[v_ExcelSummaryDOR_Comp60] AS E&#13;&#10;WHERE E.[REGION] IN (&apos;CALIFORNIA&apos;,&apos;HOUSTON&apos;,&apos;MOUNTAIN WEST&apos;,&apos;PORTLAND&apos;,&apos;SEATTLE&apos;,&apos;TWIN CITIES&apos;,&apos;WEST DIVISION&apos;)&#13;&#10;&#9;AND CASE WHEN E.[PROD_NAME] IN (&apos;BUSINESS INTERNET&apos;,&apos;BUSINESS CLASS ETHERNET - EDI&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Data&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;BUSINESS INTERNET&apos;,&apos;BUSINESS CLASS ETHERNET - EDI&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Data&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VOICE&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Voice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VOICE&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Voice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PRIVATE&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] IN (&apos;NDW&apos;,&apos;UCBL&apos;) THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PUBLIC&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;UCBL&apos; THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PRIVATE&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] IN (&apos;NDW&apos;,&apos;UCBL&apos;) THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PUBLIC&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;UCBL&apos; THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;SMART OFFICE - COMMERCIAL&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;WODM&apos; THEN &apos;SmartOffice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;SMART OFFICE - COMMERCIAL&apos; AND E.[ORD_TYPE] IN (&apos;VOL&apos;,&apos;NOP&apos;) AND E.[DATA_SOURCE] = &apos;WODM&apos; THEN &apos;SmartOffice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;CONNECTION PRO SERVICE FEE - COMMERCIAL&apos;,&apos;SV CONNECTION PRO&apos;,&apos;CONNECTION PRO&apos;,&apos;CONNECTION PRO - SINGLEVIEW&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connection Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;CONNECTION PRO SERVICE FEE - COMMERCIAL&apos;,&apos;SV CONNECTION PRO&apos;,&apos;CONNECTION PRO&apos;,&apos;CONNECTION PRO - SINGLEVIEW&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connection Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SV WIFI PRO&apos;,&apos;LB WIFI PRO&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;WiFi Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SV WIFI PRO&apos;,&apos;LB WIFI PRO&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;WiFi Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SECURITYEDGE - COMMERCIAL&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;SecurityEdge&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SECURITYEDGE - COMMERCIAL&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;SecurityEdge&apos;&#13;&#10;&#9;&#9;&#9;ELSE NULL END IS NOT NULL&#13;&#10;&#9;AND E.[ORDER_COMPLETE_DTE] &gt;&gt;= (SELECT D.[FISCAL_MONTH_START] FROM [WISDM].[Dim].[Date] AS D WHERE D.[DATE_ID] = CAST(GETDATE() AS DATE))&#13;&#10;GROUP BY E.[REGION]&#13;&#10;&#9;&#9;,CAST(E.[ORDER_COMPLETE_DTE] AS DATE)&#13;&#10;&#9;&#9;,CASE WHEN E.[PROD_NAME] IN (&apos;BUSINESS INTERNET&apos;,&apos;BUSINESS CLASS ETHERNET - EDI&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Data&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;BUSINESS INTERNET&apos;,&apos;BUSINESS CLASS ETHERNET - EDI&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Data&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VOICE&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Voice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VOICE&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Voice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PRIVATE&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] IN (&apos;NDW&apos;,&apos;UCBL&apos;) THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PUBLIC&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;UCBL&apos; THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PRIVATE&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] IN (&apos;NDW&apos;,&apos;UCBL&apos;) THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PUBLIC&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;UCBL&apos; THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;SMART OFFICE - COMMERCIAL&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;WODM&apos; THEN &apos;SmartOffice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;SMART OFFICE - COMMERCIAL&apos; AND E.[ORD_TYPE] IN (&apos;VOL&apos;,&apos;NOP&apos;) AND E.[DATA_SOURCE] = &apos;WODM&apos; THEN &apos;SmartOffice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;CONNECTION PRO SERVICE FEE - COMMERCIAL&apos;,&apos;SV CONNECTION PRO&apos;,&apos;CONNECTION PRO&apos;,&apos;CONNECTION PRO - SINGLEVIEW&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connection Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;CONNECTION PRO SERVICE FEE - COMMERCIAL&apos;,&apos;SV CONNECTION PRO&apos;,&apos;CONNECTION PRO&apos;,&apos;CONNECTION PRO - SINGLEVIEW&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connection Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SV WIFI PRO&apos;,&apos;LB WIFI PRO&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;WiFi Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SV WIFI PRO&apos;,&apos;LB WIFI PRO&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;WiFi Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SECURITYEDGE - COMMERCIAL&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;SecurityEdge&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SECURITYEDGE - COMMERCIAL&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;SecurityEdge&apos;&#13;&#10;&#9;&#9;&#9;ELSE NULL END&#13;&#10;&#9;&#9;,CASE WHEN E.[PROD_NAME] IN (&apos;BUSINESS INTERNET&apos;,&apos;BUSINESS CLASS ETHERNET - EDI&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;BUSINESS INTERNET&apos;,&apos;BUSINESS CLASS ETHERNET - EDI&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VOICE&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VOICE&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PRIVATE&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] IN (&apos;NDW&apos;,&apos;UCBL&apos;) THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PUBLIC&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;UCBL&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PRIVATE&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] IN (&apos;NDW&apos;,&apos;UCBL&apos;) THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PUBLIC&apos; AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;UCBL&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;SMART OFFICE - COMMERCIAL&apos; AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] =&apos;WODM&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;SMART OFFICE - COMMERCIAL&apos; AND E.[ORD_TYPE] IN (&apos;VOL&apos;,&apos;NOP&apos;) AND E.[DATA_SOURCE] = &apos;WODM&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;CONNECTION PRO SERVICE FEE - COMMERCIAL&apos;,&apos;SV CONNECTION PRO&apos;,&apos;CONNECTION PRO&apos;,&apos;CONNECTION PRO - SINGLEVIEW&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;CONNECTION PRO SERVICE FEE - COMMERCIAL&apos;,&apos;SV CONNECTION PRO&apos;,&apos;CONNECTION PRO&apos;,&apos;CONNECTION PRO - SINGLEVIEW&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SV WIFI PRO&apos;,&apos;LB WIFI PRO&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SV WIFI PRO&apos;,&apos;LB WIFI PRO&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SECURITYEDGE - COMMERCIAL&apos;) AND E.[ORD_TYPE] = &apos;CON&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connect&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SECURITYEDGE - COMMERCIAL&apos;) AND E.[ORD_TYPE] = &apos;VOL&apos; AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Disconnect&apos;&#13;&#10;&#9;&#9;&#9;ELSE NULL END&#13;&#10;&#13;&#10;UNION ALL&#13;&#10;&#13;&#10;SELECT CASE WHEN E.[REGION] = &apos;CALIFORNIA&apos; THEN &apos;California&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[REGION] = &apos;HOUSTON&apos; THEN &apos;Houston&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[REGION] = &apos;MOUNTAIN WEST&apos; THEN &apos;Mountain West&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[REGION] = &apos;PORTLAND&apos; THEN &apos;Portland&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[REGION] = &apos;SEATTLE&apos; THEN &apos;Seattle&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[REGION] = &apos;TWIN CITIES&apos; THEN &apos;Twin Cities&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[REGION] = &apos;WEST DIVISION&apos; THEN &apos;West Division&apos;&#13;&#10;&#9;&#9;&#9;ELSE NULL END AS [REGION]&#13;&#10;&#9;,CAST(E.[ORDER_COMPLETE_DTE] AS DATE) AS DATE&#13;&#10;&#9;,CASE WHEN E.[PROD_NAME] IN (&apos;BUSINESS INTERNET&apos;,&apos;BUSINESS CLASS ETHERNET - EDI&apos;) AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Data&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VOICE&apos; AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Voice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PRIVATE&apos; AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] IN (&apos;NDW&apos;,&apos;UCBL&apos;) THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PUBLIC&apos; AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] = &apos;UCBL&apos; THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;SMART OFFICE - COMMERCIAL&apos; AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;,&apos;NOP&apos;) AND E.[DATA_SOURCE] =&apos;WODM&apos; THEN &apos;SmartOffice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;CONNECTION PRO SERVICE FEE - COMMERCIAL&apos;,&apos;SV CONNECTION PRO&apos;,&apos;CONNECTION PRO&apos;,&apos;CONNECTION PRO - SINGLEVIEW&apos;) AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connection Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SV WIFI PRO&apos;,&apos;LB WIFI PRO&apos;) AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;WiFi Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SECURITYEDGE - COMMERCIAL&apos;) AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;SecurityEdge&apos;&#13;&#10;&#9;&#9;&#9;ELSE NULL END AS [PRODUCT]&#13;&#10;&#9;,&apos;Net Add&apos; AS ACTION&#13;&#10;&#9;,SUM(E.[NET_QTY]) AS SUM&#13;&#10;FROM [RptFin].[ext].[v_ExcelSummaryDOR_Comp60] AS E&#13;&#10;WHERE E.[REGION] IN (&apos;CALIFORNIA&apos;,&apos;HOUSTON&apos;,&apos;MOUNTAIN WEST&apos;,&apos;PORTLAND&apos;,&apos;SEATTLE&apos;,&apos;TWIN CITIES&apos;,&apos;WEST DIVISION&apos;)&#13;&#10;&#9;AND CASE WHEN E.[PROD_NAME] IN (&apos;BUSINESS INTERNET&apos;,&apos;BUSINESS CLASS ETHERNET - EDI&apos;) AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Data&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VOICE&apos; AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Voice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PRIVATE&apos; AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] IN (&apos;NDW&apos;,&apos;UCBL&apos;) THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PUBLIC&apos; AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] = &apos;UCBL&apos; THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;SMART OFFICE - COMMERCIAL&apos; AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;,&apos;NOP&apos;) AND E.[DATA_SOURCE] =&apos;WODM&apos; THEN &apos;SmartOffice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;CONNECTION PRO SERVICE FEE - COMMERCIAL&apos;,&apos;SV CONNECTION PRO&apos;,&apos;CONNECTION PRO&apos;,&apos;CONNECTION PRO - SINGLEVIEW&apos;) AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connection Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SV WIFI PRO&apos;,&apos;LB WIFI PRO&apos;) AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;WiFi Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SECURITYEDGE - COMMERCIAL&apos;) AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;SecurityEdge&apos;&#13;&#10;&#9;&#9;&#9;ELSE NULL END IS NOT NULL&#13;&#10;&#9;AND E.[ORDER_COMPLETE_DTE] &gt;&gt;= (SELECT D.[FISCAL_MONTH_START] FROM [WISDM].[Dim].[Date] AS D WHERE D.[DATE_ID] = CAST(GETDATE() AS DATE))&#13;&#10;GROUP BY E.[REGION]&#13;&#10;&#9;&#9;,CAST(E.[ORDER_COMPLETE_DTE] AS DATE)&#13;&#10;&#9;&#9;,CASE WHEN E.[PROD_NAME] IN (&apos;BUSINESS INTERNET&apos;,&apos;BUSINESS CLASS ETHERNET - EDI&apos;) AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Data&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VOICE&apos; AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] =&apos;NDW&apos; THEN &apos;Voice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PRIVATE&apos; AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] IN (&apos;NDW&apos;,&apos;UCBL&apos;) THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;BUSINESS VIDEO PUBLIC&apos; AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] = &apos;UCBL&apos; THEN &apos;Video&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] = &apos;SMART OFFICE - COMMERCIAL&apos; AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;,&apos;NOP&apos;) AND E.[DATA_SOURCE] =&apos;WODM&apos; THEN &apos;SmartOffice&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;CONNECTION PRO SERVICE FEE - COMMERCIAL&apos;,&apos;SV CONNECTION PRO&apos;,&apos;CONNECTION PRO&apos;,&apos;CONNECTION PRO - SINGLEVIEW&apos;) AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;Connection Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SV WIFI PRO&apos;,&apos;LB WIFI PRO&apos;) AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;WiFi Pro&apos;&#13;&#10;&#9;&#9;&#9;WHEN E.[PROD_NAME] IN (&apos;SECURITYEDGE - COMMERCIAL&apos;) AND E.[ORD_TYPE] IN (&apos;CON&apos;,&apos;VOL&apos;) AND E.[DATA_SOURCE] = &apos;NDW&apos; THEN &apos;SecurityEdge&apos;&#13;&#10;&#9;&#9;&#9;ELSE NULL END</relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>REGION</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REGION]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>REGION</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>13</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='2147483649' name='LEN_RUS_S2_VWIN' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DATE</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[DATE]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>DATE</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+              <attribute datatype='boolean' name='TypeIsDateTime2orDate'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PRODUCT</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[PRODUCT]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>PRODUCT</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>14</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='2147483649' name='LEN_RUS_S2_VWIN' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ACTION</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ACTION]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>ACTION</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>10</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='2147483649' name='LEN_RUS_S2_VWIN' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SUM</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[SUM]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>SUM</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[ACTION]' role='dimension' type='nominal' />
+      <column caption='-SUM' datatype='integer' name='[Calculation_1855764527250608129]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='-[SUM]' />
+      </column>
+      <column caption='Running SUM (SUM)' datatype='integer' name='[Calculation_1855764527250669570]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RUNNING_SUM(SUM([SUM]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Max' datatype='integer' name='[Calculation_1855764527250735107]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF {FIXED DATETRUNC(&apos;year&apos;,[DATE]), [PRODUCT], [REGION] &#13;&#10;    : MAX(IF [ACTION] = &apos;Net Add&apos;&#13;&#10;        THEN [SUM] &#13;&#10;            END)}&#13;&#10;= [SUM] THEN [SUM] END&#13;&#10;&#13;&#10;//IF {FIXED : MAX([SUM])} = [SUM] THEN [SUM] END' />
+      </column>
+      <column caption='Min' datatype='integer' name='[Calculation_1855764527250784260]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF {FIXED DATETRUNC(&apos;year&apos;,[DATE]), [PRODUCT], [REGION] &#13;&#10;    : MIN(IF [ACTION] = &apos;Net Add&apos;&#13;&#10;        THEN [SUM] &#13;&#10;            END)}&#13;&#10;= [SUM] THEN [SUM] END&#13;&#10;&#13;&#10;&#13;&#10;//IF {FIXED : MIN([SUM])} = [SUM] THEN [SUM] END' />
+      </column>
+      <column caption='Day Offset' datatype='datetime' name='[Calculation_1855764527250825221]' role='dimension' type='quantitative'>
+        <calculation class='tableau' formula='DATETRUNC(&apos;day&apos;,[DATE]) +&#13;&#10;IF [ACTION] = &quot;Connect&quot; THEN&#13;&#10;-[Parameters].[Parameter 1]&#13;&#10;ELSE&#13;&#10;[Parameters].[Parameter 1]&#13;&#10;END' />
+      </column>
+      <column caption='Min Date' datatype='date' name='[Calculation_1855764527251013638 1]' role='dimension' type='quantitative'>
+        <calculation class='tableau' formula='IF {FIXED DATETRUNC(&apos;year&apos;,[DATE]), [PRODUCT], [REGION] &#13;&#10;    : MIN(IF [ACTION] = &apos;Net Add&apos;&#13;&#10;        THEN [SUM] &#13;&#10;            END)}&#13;&#10;= [SUM] THEN [DATE] END&#13;&#10;&#13;&#10;//IF {FIXED : MIN([SUM])} = [SUM] THEN [DATE] END' />
+      </column>
+      <column caption='Max Date' datatype='date' name='[Calculation_1855764527251013638]' role='dimension' type='quantitative'>
+        <calculation class='tableau' formula='IF {FIXED DATETRUNC(&apos;year&apos;,[DATE]), [PRODUCT], [REGION] &#13;&#10;    : MAX(IF [ACTION] = &apos;Net Add&apos;&#13;&#10;        THEN [SUM] &#13;&#10;            END)}&#13;&#10;= [SUM] THEN [DATE] END&#13;&#10;&#13;&#10;//IF {FIXED : MAX([SUM])} = [SUM] THEN [DATE] END' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column-instance column='[ACTION]' derivation='None' name='[none:ACTION:nk]' pivot='key' type='nominal' />
+      <extract count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='W:/DIV/BSG/West/2020/Forecasting &amp; Analytics/02-Reporting/09-Tableau/01-Exec Summary/01-Archive/Custom SQL Query (RptFin).hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='03/09/2020 08:19:47 PM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path='Custom SQL Query (RptFin)' increment-value='%null%' refresh-type='create' rows-inserted='2182' timestamp-start='2020-03-09 20:19:47.506' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>REGION</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REGION]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REGION</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>7</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>DATE</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[DATE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>DATE</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>16</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>PRODUCT</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[PRODUCT]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>PRODUCT</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>7</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ACTION</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[ACTION]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ACTION</remote-alias>
+              <ordinal>3</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>SUM</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[SUM]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>SUM</remote-alias>
+              <ordinal>4</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>297</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.419817' measure-ordering='alphabetic' measure-percentage='0.338983' parameter-percentage='0.241199' show-structure='true' user-set-layout='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:ACTION:nk]' type='palette'>
+            <map to='#1170aa'>
+              <bucket>&quot;Connect&quot;</bucket>
+            </map>
+            <map to='#c85200'>
+              <bucket>&quot;Disconnect&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Net Add&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Offset' datatype='real' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='0.10000000000000853'>
+          <calculation class='tableau' formula='0.10000000000000853' />
+          <range granularity='0.10000000000000001' max='100.0' min='-100.0' />
+        </column>
+      </datasource-dependencies>
+    </datasource>
+  </datasources>
+  <shared-views>
+    <shared-view name='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+      <datasources>
+        <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+        <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+        <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+        <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+        <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <filter class='categorical' column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]'>
+        <groupfilter function='member' level='[none:PRODUCT:nk]' member='&quot;Data&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+        <target field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]' />
+      </filter>
+      <filter class='categorical' column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]'>
+        <groupfilter function='member' level='[none:REGION:nk]' member='&quot;West Division&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+        <target field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]' />
+      </filter>
+    </shared-view>
+  </shared-views>
+  <worksheets>
+    <worksheet name='Best Day'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#1170aa'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+            <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+            <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+            <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+            <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='16' />
+            <format attr='color' value='#1170aa' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{5851DFCD-C496-49D6-A8A9-19648E724D4F}' />
+    </worksheet>
+    <worksheet name='Best Day (2)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#1170aa'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+            <column datatype='string' name='[ACTION]' role='dimension' type='nominal' />
+            <column caption='Max Date' datatype='date' name='[Calculation_1855764527251013638]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='IF {FIXED DATETRUNC(&apos;year&apos;,[DATE]), [PRODUCT], [REGION] &#13;&#10;    : MAX(IF [ACTION] = &apos;Net Add&apos;&#13;&#10;        THEN [SUM] &#13;&#10;            END)}&#13;&#10;= [SUM] THEN [DATE] END&#13;&#10;&#13;&#10;//IF {FIXED : MAX([SUM])} = [SUM] THEN [DATE] END' />
+            </column>
+            <column datatype='date' name='[DATE]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+            <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[SUM]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_1855764527251013638]' derivation='Max' name='[max:Calculation_1855764527251013638:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+            <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+            <format attr='text-format' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[max:Calculation_1855764527251013638:qk]' value='*mmm d' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='16' />
+            <format attr='color' value='#1170aa' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[max:Calculation_1855764527251013638:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{BC1F0C6E-BEB0-4D7E-A096-A7B02CD48B61}' />
+    </worksheet>
+    <worksheet name='Best Day (3)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#1170aa'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+            <column datatype='string' name='[ACTION]' role='dimension' type='nominal' />
+            <column caption='Max' datatype='integer' name='[Calculation_1855764527250735107]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF {FIXED DATETRUNC(&apos;year&apos;,[DATE]), [PRODUCT], [REGION] &#13;&#10;    : MAX(IF [ACTION] = &apos;Net Add&apos;&#13;&#10;        THEN [SUM] &#13;&#10;            END)}&#13;&#10;= [SUM] THEN [SUM] END&#13;&#10;&#13;&#10;//IF {FIXED : MAX([SUM])} = [SUM] THEN [SUM] END' />
+            </column>
+            <column datatype='date' name='[DATE]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+            <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[SUM]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_1855764527250735107]' derivation='Max' name='[max:Calculation_1855764527250735107:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+            <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+            <format attr='text-format' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[max:Calculation_1855764527250735107:qk]' value='n#,##0;(#,##0)' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='16' />
+            <format attr='color' value='#1170aa' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[max:Calculation_1855764527250735107:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{5C75C9DA-3C2E-46C2-9AE8-F957A4983946}' />
+    </worksheet>
+    <worksheet name='Daily Activity'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Offset' datatype='real' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='0.10000000000000853'>
+              <calculation class='tableau' formula='0.10000000000000853' />
+              <range granularity='0.10000000000000001' max='100.0' min='-100.0' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+            <column datatype='string' name='[ACTION]' role='dimension' type='nominal' />
+            <column caption='-SUM' datatype='integer' name='[Calculation_1855764527250608129]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='-[SUM]' />
+            </column>
+            <column caption='Running SUM (SUM)' datatype='integer' name='[Calculation_1855764527250669570]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='RUNNING_SUM(SUM([SUM]))'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Day Offset' datatype='datetime' name='[Calculation_1855764527250825221]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='DATETRUNC(&apos;day&apos;,[DATE]) +&#13;&#10;IF [ACTION] = &quot;Connect&quot; THEN&#13;&#10;-[Parameters].[Parameter 1]&#13;&#10;ELSE&#13;&#10;[Parameters].[Parameter 1]&#13;&#10;END' />
+            </column>
+            <column datatype='date' name='[DATE]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+            <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[SUM]' role='measure' type='quantitative' />
+            <column-instance column='[ACTION]' derivation='None' name='[none:ACTION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_1855764527250825221]' derivation='None' name='[none:Calculation_1855764527250825221:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+            <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_1855764527250608129]' derivation='Sum' name='[sum:Calculation_1855764527250608129:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[SUM]' derivation='Sum' name='[sum:SUM:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[DATE]' derivation='Day-Trunc' name='[tdy:DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1855764527250669570]' derivation='User' name='[usr:Calculation_1855764527250669570:qk:8]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Field'>
+                <order field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[Calculation_1855764527250825221]' />
+                <order field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[ACTION]' />
+                <order field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[tdy:DATE:qk]' />
+              </table-calc>
+            </column-instance>
+            <column-instance column='[Calculation_1855764527250669570]' derivation='User' name='[usr:Calculation_1855764527250669570:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:ACTION:nk]' member='&quot;Connect&quot;' />
+              <groupfilter function='member' level='[none:ACTION:nk]' member='&quot;Disconnect&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:Calculation_1855764527250825221:qk]' field-type='quantitative' fold='true' scope='cols' type='space' />
+            <format attr='display' class='0' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:Calculation_1855764527250825221:qk]' scope='cols' value='false' />
+            <format attr='title' class='0' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[usr:Calculation_1855764527250669570:qk:8]' scope='rows' value='' />
+            <format attr='title' class='0' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[tdy:DATE:qk]' scope='cols' value='' />
+            <format attr='display' class='0' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[usr:Calculation_1855764527250669570:qk:8]' scope='rows' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Day of DATE:&#9;</run>
+                <run bold='true'>&lt;[federated.0cm449c03j1z351gb6jrw0ys4gfq].[tdy:DATE:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>ACTION:&#9;</run>
+                <run bold='true'>&lt;[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>SUM:&#9;</run>
+                <run bold='true'>&lt;[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[tdy:DATE:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[usr:Calculation_1855764527250669570:qk]' />
+              <lod column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Day of DATE:&#9;</run>
+                <run bold='true'>&lt;[federated.0cm449c03j1z351gb6jrw0ys4gfq].[tdy:DATE:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>ACTION:&#9;</run>
+                <run bold='true'>&lt;[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>SUM:&#9;</run>
+                <run bold='true'>&lt;[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='right' />
+                <format attr='vertical-align' value='bottom' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='line-interpolation' value='jump' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-markers-mode' value='none' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:Calculation_1855764527250825221:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='GanttBar' />
+            <encodings>
+              <color column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]' />
+              <size column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:Calculation_1855764527250608129:qk]' />
+              <lod column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Day of DATE:&#9;</run>
+                <run bold='true'>&lt;[federated.0cm449c03j1z351gb6jrw0ys4gfq].[tdy:DATE:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>ACTION:&#9;</run>
+                <run bold='true'>&lt;[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>SUM:&#9;</run>
+                <run bold='true'>&lt;[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='right' />
+                <format attr='vertical-align' value='bottom' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[usr:Calculation_1855764527250669570:qk:8]</rows>
+        <cols>([federated.0cm449c03j1z351gb6jrw0ys4gfq].[tdy:DATE:qk] + [federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:Calculation_1855764527250825221:qk])</cols>
+      </table>
+      <simple-id uuid='{C37CD893-2686-473C-AD3D-3B051AFC5584}' />
+    </worksheet>
+    <worksheet name='MTD Connects'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#1170aa'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+            <column datatype='string' name='[ACTION]' role='dimension' type='nominal' />
+            <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+            <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[SUM]' role='measure' type='quantitative' />
+            <column-instance column='[ACTION]' derivation='None' name='[none:ACTION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+            <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[SUM]' derivation='Sum' name='[sum:SUM:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]'>
+            <groupfilter function='member' level='[none:ACTION:nk]' member='&quot;Connect&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+            <format attr='text-format' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' value='n#,##0;(#,##0)' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='16' />
+            <format attr='color' value='#1170aa' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{8B74D2D4-323A-49A4-BEB2-EEAC6CD4C0AE}' />
+    </worksheet>
+    <worksheet name='MTD Disconnects'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#c85200'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+            <column datatype='string' name='[ACTION]' role='dimension' type='nominal' />
+            <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+            <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[SUM]' role='measure' type='quantitative' />
+            <column-instance column='[ACTION]' derivation='None' name='[none:ACTION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+            <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[SUM]' derivation='Sum' name='[sum:SUM:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]'>
+            <groupfilter function='member' level='[none:ACTION:nk]' member='&quot;Disconnect&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+            <format attr='text-format' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' value='n#,##0;(#,##0)' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='16' />
+            <format attr='color' value='#c85200' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{C359A0BE-1650-438E-B3E1-DAF9A7B04B47}' />
+    </worksheet>
+    <worksheet name='MTD Net Adds'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#999999'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+            <column datatype='string' name='[ACTION]' role='dimension' type='nominal' />
+            <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+            <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[SUM]' role='measure' type='quantitative' />
+            <column-instance column='[ACTION]' derivation='None' name='[none:ACTION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+            <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[SUM]' derivation='Sum' name='[sum:SUM:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:ACTION:nk]' member='&quot;Connect&quot;' />
+              <groupfilter function='member' level='[none:ACTION:nk]' member='&quot;Disconnect&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+            <format attr='text-format' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' value='n#,##0;(#,##0)' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='16' />
+            <format attr='color' value='#999999' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{03DDFE2D-B0F5-4DA2-90DF-6F6DE4BAC55A}' />
+    </worksheet>
+    <worksheet name='Worst Day'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#c85200'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+            <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+            <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+            <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+            <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='16' />
+            <format attr='color' value='#1170aa' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{B26E036F-EF6E-4962-9BBC-C1830038CF6B}' />
+    </worksheet>
+    <worksheet name='Worst Day (2)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#1170aa'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+            <column datatype='string' name='[ACTION]' role='dimension' type='nominal' />
+            <column caption='Min Date' datatype='date' name='[Calculation_1855764527251013638 1]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='IF {FIXED DATETRUNC(&apos;year&apos;,[DATE]), [PRODUCT], [REGION] &#13;&#10;    : MIN(IF [ACTION] = &apos;Net Add&apos;&#13;&#10;        THEN [SUM] &#13;&#10;            END)}&#13;&#10;= [SUM] THEN [DATE] END&#13;&#10;&#13;&#10;//IF {FIXED : MIN([SUM])} = [SUM] THEN [DATE] END' />
+            </column>
+            <column datatype='date' name='[DATE]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+            <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[SUM]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_1855764527251013638 1]' derivation='Min' name='[min:Calculation_1855764527251013638 1:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+            <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+            <format attr='text-format' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[min:Calculation_1855764527251013638 1:qk]' value='*mmm d' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='16' />
+            <format attr='color' value='#c85200' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[min:Calculation_1855764527251013638 1:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{91557910-1925-4937-ADEF-954CAAEE1E24}' />
+    </worksheet>
+    <worksheet name='Worst Day (3)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#1170aa'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+            <column datatype='string' name='[ACTION]' role='dimension' type='nominal' />
+            <column caption='Min' datatype='integer' name='[Calculation_1855764527250784260]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF {FIXED DATETRUNC(&apos;year&apos;,[DATE]), [PRODUCT], [REGION] &#13;&#10;    : MIN(IF [ACTION] = &apos;Net Add&apos;&#13;&#10;        THEN [SUM] &#13;&#10;            END)}&#13;&#10;= [SUM] THEN [SUM] END&#13;&#10;&#13;&#10;&#13;&#10;//IF {FIXED : MIN([SUM])} = [SUM] THEN [SUM] END' />
+            </column>
+            <column datatype='date' name='[DATE]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+            <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[SUM]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_1855764527250784260]' derivation='Max' name='[max:Calculation_1855764527250784260:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+            <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+            <format attr='text-format' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[max:Calculation_1855764527250784260:qk]' value='n#,##0;(#,##0)' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='16' />
+            <format attr='color' value='#c85200' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[max:Calculation_1855764527250784260:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{406F2B50-E7FA-4A0A-8253-2A4FF21B527F}' />
+    </worksheet>
+    <worksheet name='Yesterday Connects'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#1170aa'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+            <column datatype='string' name='[ACTION]' role='dimension' type='nominal' />
+            <column datatype='date' name='[DATE]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+            <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[SUM]' role='measure' type='quantitative' />
+            <column-instance column='[ACTION]' derivation='None' name='[none:ACTION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[DATE]' derivation='None' name='[none:DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+            <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[SUM]' derivation='Sum' name='[sum:SUM:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]'>
+            <groupfilter function='member' level='[none:ACTION:nk]' member='&quot;Connect&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='relative-date' column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:DATE:qk]' first-period='-1' include-future='true' include-null='false' last-period='-1' period-type='day' period-type-v2='day' />
+          <slices>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:DATE:qk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+            <format attr='text-format' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' value='n#,##0;(#,##0)' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='16' />
+            <format attr='color' value='#1170aa' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{8616C911-5AF8-463C-8346-C96D62DF805B}' />
+    </worksheet>
+    <worksheet name='Yesterday Disconnects'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#c85200'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+            <column datatype='string' name='[ACTION]' role='dimension' type='nominal' />
+            <column datatype='date' name='[DATE]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+            <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[SUM]' role='measure' type='quantitative' />
+            <column-instance column='[ACTION]' derivation='None' name='[none:ACTION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[DATE]' derivation='None' name='[none:DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+            <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[SUM]' derivation='Sum' name='[sum:SUM:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]'>
+            <groupfilter function='member' level='[none:ACTION:nk]' member='&quot;Disconnect&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='relative-date' column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:DATE:qk]' first-period='-1' include-future='true' include-null='false' last-period='-1' period-type='day' period-type-v2='day' />
+          <slices>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:DATE:qk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+            <format attr='text-format' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' value='n#,##0;(#,##0)' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='16' />
+            <format attr='color' value='#c85200' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{6D49EC1B-13EA-4CCF-8C6D-0F8E8764A272}' />
+    </worksheet>
+    <worksheet name='Yesterday Net Adds'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#999999'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+            <column datatype='string' name='[ACTION]' role='dimension' type='nominal' />
+            <column datatype='date' name='[DATE]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+            <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[SUM]' role='measure' type='quantitative' />
+            <column-instance column='[ACTION]' derivation='None' name='[none:ACTION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[DATE]' derivation='None' name='[none:DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+            <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[SUM]' derivation='Sum' name='[sum:SUM:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:ACTION:nk]' member='&quot;Connect&quot;' />
+              <groupfilter function='member' level='[none:ACTION:nk]' member='&quot;Disconnect&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='relative-date' column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:DATE:qk]' first-period='-1' include-future='true' include-null='false' last-period='-1' period-type='day' period-type-v2='day' />
+          <slices>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:DATE:qk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</column>
+            <column>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+            <format attr='text-format' field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' value='n#,##0;(#,##0)' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='16' />
+            <format attr='color' value='#999999' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[sum:SUM:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{6926387E-2087-4057-BDF0-7320FCCFFEB1}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Subsciber Exec Summary'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource caption='Custom SQL Query (RptFin)' name='federated.0cm449c03j1z351gb6jrw0ys4gfq' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0cm449c03j1z351gb6jrw0ys4gfq'>
+        <column datatype='string' name='[PRODUCT]' role='dimension' type='nominal' />
+        <column datatype='string' name='[REGION]' role='dimension' type='nominal' />
+        <column-instance column='[PRODUCT]' derivation='None' name='[none:PRODUCT:nk]' pivot='key' type='nominal' />
+        <column-instance column='[REGION]' derivation='None' name='[none:REGION:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='74000' id='7' param='horz' type='layout-flow' w='98400' x='800' y='25000'>
+            <zone h='74000' id='5' type='layout-basic' w='82400' x='800' y='25000'>
+              <zone h='74000' id='3' name='Daily Activity' show-title='false' w='82400' x='800' y='25000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='74000' id='6' is-fixed='true' param='vert' type='layout-flow' w='16000' x='83200' y='25000'>
+              <zone h='27625' id='8' mode='radiolist' name='Daily Activity' param='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]' show-all='false' type='filter' w='16000' x='83200' y='25000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='27625' id='9' mode='radiolist' name='Daily Activity' param='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]' show-all='false' type='filter' w='16000' x='83200' y='52625'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone h='12000' id='10' param='vert' type='layout-flow' w='24600' x='50000' y='1000'>
+            <zone h='12000' id='11' param='horz' type='layout-flow' w='24600' x='50000' y='1000'>
+              <zone h='12000' id='13' param='horz' type='layout-flow' w='24600' x='50000' y='1000'>
+                <zone h='12000' id='22' name='MTD Net Adds' w='24600' x='50000' y='1000'>
+                  <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone h='12000' id='12' param='horz' type='layout-flow' w='24600' x='25400' y='1000'>
+            <zone h='12000' id='21' name='MTD Disconnects' w='24600' x='25400' y='1000'>
+              <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone h='12000' id='14' param='horz' type='layout-flow' w='24600' x='800' y='1000'>
+            <zone h='12000' id='20' name='MTD Connects' w='24600' x='800' y='1000'>
+              <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone h='12000' id='15' param='vert' type='layout-flow' w='24600' x='800' y='13000'>
+            <zone h='12000' id='25' name='Yesterday Connects' w='24600' x='800' y='13000'>
+              <layout-cache cell-count-h='1' non-cell-size-h='43' type-h='cell' type-w='fixed' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone h='12000' id='16' param='vert' type='layout-flow' w='24600' x='25400' y='13000'>
+            <zone h='12000' id='23' name='Yesterday Disconnects' w='24600' x='25400' y='13000'>
+              <layout-cache cell-count-h='1' non-cell-size-h='43' type-h='cell' type-w='fixed' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone h='12000' id='19' param='vert' type='layout-flow' w='24600' x='50000' y='13000'>
+            <zone h='12000' id='24' name='Yesterday Net Adds' w='24600' x='50000' y='13000'>
+              <layout-cache cell-count-h='1' non-cell-size-h='43' type-h='cell' type-w='fixed' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone h='6000' id='26' name='Best Day' w='24600' x='74600' y='1000'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='6000' id='27' name='Worst Day' w='24600' x='74600' y='13000'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='6000' id='28' name='Worst Day (2)' show-title='false' w='12300' x='74600' y='19000'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='6000' id='29' name='Best Day (2)' show-title='false' w='12300' x='74600' y='7000'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='6000' id='30' name='Best Day (3)' show-title='false' w='12300' x='86900' y='7000'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='6000' id='31' name='Worst Day (3)' show-title='false' w='12300' x='86900' y='19000'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1300' minheight='1300' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='48' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='49' param='vert' type='layout-flow' w='98400' x='800' y='1000'>
+                <zone fixed-size='88' h='12000' id='20' is-fixed='true' name='MTD Connects' w='24600' x='800' y='1000'>
+                  <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='88' h='12000' id='21' is-fixed='true' name='MTD Disconnects' w='24600' x='25400' y='1000'>
+                  <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='88' h='12000' id='22' is-fixed='true' name='MTD Net Adds' w='24600' x='50000' y='1000'>
+                  <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='40' h='6000' id='26' is-fixed='true' name='Best Day' w='24600' x='74600' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='40' h='6000' id='29' is-fixed='true' name='Best Day (2)' show-title='false' w='12300' x='74600' y='7000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='40' h='6000' id='30' is-fixed='true' name='Best Day (3)' show-title='false' w='12300' x='86900' y='7000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='88' h='12000' id='25' is-fixed='true' name='Yesterday Connects' w='24600' x='800' y='13000'>
+                  <layout-cache cell-count-h='1' non-cell-size-h='43' type-h='cell' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='88' h='12000' id='23' is-fixed='true' name='Yesterday Disconnects' w='24600' x='25400' y='13000'>
+                  <layout-cache cell-count-h='1' non-cell-size-h='43' type-h='cell' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='88' h='12000' id='24' is-fixed='true' name='Yesterday Net Adds' w='24600' x='50000' y='13000'>
+                  <layout-cache cell-count-h='1' non-cell-size-h='43' type-h='cell' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='40' h='6000' id='27' is-fixed='true' name='Worst Day' w='24600' x='74600' y='13000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='40' h='6000' id='28' is-fixed='true' name='Worst Day (2)' show-title='false' w='12300' x='74600' y='19000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='40' h='6000' id='31' is-fixed='true' name='Worst Day (3)' show-title='false' w='12300' x='86900' y='19000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='27625' id='8' mode='dropdown' name='Daily Activity' param='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]' show-all='false' type='filter' w='16000' x='83200' y='25000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='27625' id='9' mode='dropdown' name='Daily Activity' param='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]' show-all='false' type='filter' w='16000' x='83200' y='52625'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='74000' id='3' is-fixed='true' name='Daily Activity' show-title='false' w='82400' x='800' y='25000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{2A446C9E-3665-4570-B156-4DD3324B2666}' />
+    </dashboard>
+  </dashboards>
+  <windows saved-dpi-scale-factor='1.5' source-height='30'>
+    <window class='worksheet' name='Daily Activity'>
+      <cards>
+        <edge name='left'>
+          <strip size='106'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='20'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='106'>
+            <card mode='radiolist' param='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]' show-all='false' type='filter' />
+            <card mode='radiolist' param='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]' show-all='false' type='filter' />
+            <card pane-specification-id='2' param='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:Calculation_1855764527250825221:qk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:PRODUCT:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[tyr:Calculation_1855764527250825221:qk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[yr:DATE:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{F0898C92-7800-4F9A-930F-CB86793F1563}' />
+    </window>
+    <window class='worksheet' name='MTD Connects'>
+      <cards>
+        <edge name='left'>
+          <strip size='106'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='20'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{DD38A265-471F-4A60-896F-5FDE82809945}' />
+    </window>
+    <window class='worksheet' name='Yesterday Connects'>
+      <cards>
+        <edge name='left'>
+          <strip size='106'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='20'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:DATE:qk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{08FF6071-209D-4416-99CF-A183A5DCA664}' />
+    </window>
+    <window class='worksheet' name='MTD Disconnects'>
+      <cards>
+        <edge name='left'>
+          <strip size='106'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='20'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{5496513C-5624-4F8B-AE10-F5D61E0D5FA2}' />
+    </window>
+    <window class='worksheet' name='Yesterday Disconnects'>
+      <cards>
+        <edge name='left'>
+          <strip size='106'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='20'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:DATE:qk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{1CEB5E8F-4481-4233-8C07-BDA77917B511}' />
+    </window>
+    <window class='worksheet' name='MTD Net Adds'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{6C139921-C769-4CFD-9845-7D4752A0735F}' />
+    </window>
+    <window class='worksheet' name='Yesterday Net Adds'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:DATE:qk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{58AF897B-A0B6-4A6D-AAE2-DA74E4FDADB3}' />
+    </window>
+    <window class='worksheet' name='Best Day'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{95EC8585-AF66-491E-B82D-297022F8A295}' />
+    </window>
+    <window class='worksheet' name='Best Day (2)'>
+      <cards>
+        <edge name='left'>
+          <strip size='106'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[tyr:Calculation_1855764527251013638:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{70545981-F1A0-455B-93D8-B3623AF4297F}' />
+    </window>
+    <window class='worksheet' name='Best Day (3)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[tyr:Calculation_1855764527251013638:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{5D0A3D40-5C33-4568-9177-20C0B16E92FF}' />
+    </window>
+    <window class='worksheet' name='Worst Day'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{3B76179C-181B-4760-8F45-F31CE621305B}' />
+    </window>
+    <window class='worksheet' name='Worst Day (2)'>
+      <cards>
+        <edge name='left'>
+          <strip size='129'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[tyr:Calculation_1855764527251013638 1:qk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[tyr:Calculation_1855764527251013638:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{26C99FA6-E457-4E63-8583-29192E788395}' />
+    </window>
+    <window class='worksheet' name='Worst Day (3)'>
+      <cards>
+        <edge name='left'>
+          <strip size='243'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:REGION:nk]</field>
+            <field>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[tyr:Calculation_1855764527251013638:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{6CC1637E-73E4-4441-A8D6-D76718CF084E}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Subsciber Exec Summary'>
+      <viewpoints>
+        <viewpoint name='Best Day'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Best Day (2)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Best Day (3)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Daily Activity'>
+          <zoom type='entire-view' />
+          <selection-collection>
+            <node-selection select-tuples='false'>
+              <oriented-node-reference orientation='vertical'>
+                <node-reference>
+                  <axis>[federated.0cm449c03j1z351gb6jrw0ys4gfq].[usr:Calculation_1855764527250669570:qk:8]</axis>
+                </node-reference>
+                <page-reference />
+              </oriented-node-reference>
+            </node-selection>
+          </selection-collection>
+          <highlight field='[federated.0cm449c03j1z351gb6jrw0ys4gfq].[none:ACTION:nk]'>
+            <bucket-selection />
+          </highlight>
+        </viewpoint>
+        <viewpoint name='MTD Connects'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='MTD Disconnects'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='MTD Net Adds'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Worst Day'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Worst Day (2)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Worst Day (3)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Yesterday Connects'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Yesterday Disconnects'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Yesterday Net Adds'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='8' />
+      <simple-id uuid='{0F9438F8-8041-4788-A047-969BFA270E1A}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Best Day' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACN0lEQVR4nO3asQkDMRAAwbdRqv7bVAf6HoTxG+9MfnDBbSDQa++9L4h6P70APEkApAmA
+      NAGQJgDSBECaAEgTAGkCIE0ApI3TQT8o+AfHAay1rjGOx+EnHF/wGOOac35yF/g6bwDSBECa
+      AEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmA
+      NAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgT
+      AGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQ
+      JgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkC
+      IE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDS
+      BECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0A
+      pAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECa
+      AEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmA
+      NAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBEDaDWKhC44c/YWnAAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='33' name='Best Day (2)' width='84'>
+      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
+    </thumbnail>
+    <thumbnail height='33' name='Best Day (3)' width='64'>
+      iVBORw0KGgoAAAANSUhEUgAAAEAAAAAhCAYAAABpwa0hAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAD2ElEQVRoge2Za0xTdxjGn95osYq0TmgJl10MpZNoZSyKcxkEGsNM1ESWbMsW2BK+jC2L
+      C8mSZSwbix82b8EYt+kUNFGMYTPCvMTJZEOpA8QN2gkIs0DbzY2mRbSWtue8+9CIl7Zy3Er+
+      Xezv08l5n3Pe5zz5n/d/0oqIiPAII2ZtgDXxAFgbYE08ANYGWBMPgLUB1sQDYG2ANfEAWBtg
+      TTwA1gZYEw+AtQHWPPIBSGfz5jemAjjSPYJtZy7j2ccXoL68IKLWx/E4emkMu9oGMfDndchl
+      Eqx+WosP1+QiU60M0ffZ3fiouRc/Xx2H189BIZOgNDcN1UY99Nr5gj3OSgAjzpuo+6EfRy+N
+      oVCXioVzFQ/Umx1uVNSboJRLUbt2CZY/8RjcHh8+PW6GcXsrGitXIS9TPa3f1TaILd9fxsbi
+      HOwrXwHVnAS4PD588eMg1uxsw+cblqEsL1OYWYoy12/5qPLABdp7bogmvX4iIqpo6KCKho6I
+      17x1sJP2tF+hAMffc97r5+iVPefozf0m4vhgbeivSVr8cQs1dAyH3Ifjedp0oo/yN52gP9we
+      QX6jvgLmKWTY/fryh7qmdt0SLFDKQ87LpWIsTU9Ga/813JwKYJ5CBrPdDSKgSJcaoheLRDDq
+      tTjUacWYywPN/MQZe8fEEAz38ADAE8Hm8kApl0AmCVpNTLhzHA1iIoBIdAyP46TFgfWGDChk
+      EgDA0nQVEhMkaOy0gr/vB22eCMd+tSFLrUSOJklQj1ndBf4tE7f8yP3kO1Qb9RioXQuJWDRd
+      S01SwPT+athcHpTuOIsuq3O69mJuGupezo+4osIRcwGcHbiGdw53oaWqEIYMVUidJ0Jj1wg+
+      O2XB20U6HK5cNb0LfPXTFRRtPYOtL+XBqNcKayh0uv8XZtoFiIITfEdrP2mqv6H3jlyMqDtp
+      tpOupplMw3+Hrbf02khX00zdVqcgbzEzA5oujmLz6d/wQelibC5bFlH3bc8YDBkqPJOlDlt/
+      flEK0lVzcMriENQ3JgLos7tR09yLqsJsVBVlQywSRdT6eR5yqfieuXA3YlFwO/T4AoJ6x0QA
+      TT2jSFJIUV7w5AMfHgBK9FpcuOqExTERtm52TOD38Uk8tyhFUG/mAdyYCqDL6sTKpxYK+nAp
+      y8tESY4Gr359Hk09o/D6OQCAy+PD7vYhvLb3PNYbMlCcoxHUX0QU3X+Hj/1iwxv7TTPq1hnS
+      UV9egEmvHxu+bEf3iDOiNi05EaffLUZacjAgjicc77OjrrUfFscEfBwPhUyC/Cw1Npbo8UJ2
+      yowr6TZRD+D/BvNXgDX/AGsW5ski6+zhAAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='Daily Activity' width='192'>
+      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
+      QmCC
+    </thumbnail>
+    <thumbnail height='33' name='MTD Connects' width='84'>
+      iVBORw0KGgoAAAANSUhEUgAAAFQAAAAhCAYAAABHhIyzAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAE+klEQVRoge2aaUxUVxTH/7MxC8uMIhl2BXVKgVqqdaFCKFEhYFJa2/RDWwtJ1ZrY1m7G
+      RGli7IdaTdXGFG2rYEuqNUFbaxS1iogFEQVbWRRwWIZNBJlBYPb3Tj8YSYnAvME3Ypr3+/be
+      Offck3/OPffeNyMiIoIAb4gnO4H/G4KgPCMIyjOCoDwjCMozgqA8IwjKM4KgPCMIyjOCoDwj
+      CMozgqA8IwjKM4KgPCMIyjOCoDwj9VRgO8Pit+ttyCluQP2d+7AzLHwVMqRGByF7eSzCp3pz
+      jrUm/woKqgyj2vIy45ERFzr8XGXow+v7StBvcYzq/+J0fxxdmwhfhWzM+Q5fbcHHRyqhkElQ
+      8H4i5s/w55yrRwSt6TQhK+8yvOVSbH1lDhZGTINCJsGdfgu+PFmDZbvO4/DqBMwNn+oy1qDN
+      iXaTGZvTY/HZsmdd+neYLNCovFC2MRVBaqXbuet7BpFT3IDN6bH44VKj2+M9suT3FjdibdJs
+      FH26FEk6LRQyCQAgUK3EzjfnYd50f3xX3ACWw68vA1YHuvot0Gn9OM3d0H0fQWrluBU4FjYn
+      ix1n65Ck02JhBPeq/C8eEXRrxhysSpgFiVj0iE0uFeP5UA3a+swYsjldxuobskMsEiFEw63a
+      DH1DCNWo4CN3f/Gdqu5AXWc/Pkx+BmLRo7lzwSOC+nvLx7SxRGg3muEtl0AmcT19h8kMlgiB
+      fq4FtToYGPqGMDPAx618AaD7vhW7zt3CJ0ujoPVTuD3+IU98ly/T96KwthOvxoUNt4Lx0PcM
+      IsBHAV+F64obsDrQbrQgKlDtVk4sEbadrsVsrS/Snwtxa+wj0BPAZLZT1sEyCt14jHafu0lO
+      hp1wLIZlqctkpu9LGily0+9kdTDj+lvsTqpsvUcr9l4kXfZxutLUO8JuHLJRyu7ztP1M7Yj3
+      Fc29FLPlBFU0j/R3hccr9EJ9NxZvP4PqdhNOrHsZ65dEjdpbuSIWiRCoVmJN4iz88t7iMY9T
+      D1HIJJgbPhWHViUgOSoQG49dh9FsB/CgMnMuPtgcVyfMmnBOI/LjJcoosETYU1SPt/aXIjU6
+      GJc2pCAubAqvcyyI8Me5m12cfOVSMbLiI3F3wIrbdwcAABXN93CoogWb02KhUXnxkpPHDvYF
+      lQbsOFuHTWkxWJesm/CuOR5ikQg2BwsnS5ByqPpgjRIqLwlsThYAkFuqR6fJghX7SsYck/pt
+      EQAgIy4UeZnxrpNyq0Fw5Ea7kXRf/EHbCmuIYSfeL11hdzL00a9XOfsX13dTzJYTVNNhcun7
+      VPXQgioD/BRSZMZHPlZl9gxYkVemh8XOjGq/1tqHtNjg4eejVQZUd5hG9bU5Wfxc3gSd1g8R
+      07hfe92Fd0EHbU5cbbmHl2YGINCNq9+pmk5oPz+Kr0/XDr+TSsQ4cq0V878qRG6pfngzsToY
+      /HS5Ce8cKEVKdNCwv9XJYvmeC8g8eBl/txnBsASWCI13B7AytxQ32o345o25UHl5rNPx30OJ
+      CE6GkF/ejPzy5jH9gjVKnF2/BMEaJVgiFFZ3QK2UjTgHTlF54eQHyShr6sHOP28h+/g/sDoY
+      eEnEiAlWY/+7i0asgLcXzEBqdBAO/HUbK3PL0NVvAUuEAB85XnshDD+uXAS10v0rqTuIiCb/
+      74z6nkFk5BQjMz4SG1KiJzudx+Kp+B5a3tyLEI2Kt7PgZPIvXUQBKVfJ/OoAAAAASUVORK5C
+      YII=
+    </thumbnail>
+    <thumbnail height='33' name='MTD Disconnects' width='84'>
+      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
+      zVlMAPgbnRMTVAyPTfwAAAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='33' name='MTD Net Adds' width='84'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Subsciber Exec Summary' width='192'>
+      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
+      AABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='Worst Day' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACN0lEQVR4nO3asQkDMRAAwbdRqv7bVAf6HoTxG+9MfnDBbSDQa++9L4h6P70APEkApAmA
+      NAGQJgDSBECaAEgTAGkCIE0ApI3TQT8o+AfHAay1rjGOx+EnHF/wGOOac35yF/g6bwDSBECa
+      AEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmA
+      NAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgT
+      AGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQ
+      JgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkC
+      IE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDS
+      BECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0A
+      pAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECa
+      AEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmA
+      NAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBEDaDWKhC44c/YWnAAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='33' name='Worst Day (2)' width='84'>
+      iVBORw0KGgoAAAANSUhEUgAAAFQAAAAhCAYAAABHhIyzAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAFDklEQVRoge2af0yUdRzH38/9vuPHwaEXoAIGIm6KlamE9Udbo3IWayY0iaKsZW0pztq0
+      ZkA/NE2ZhTnnUnSaPxj90mHDTFtpPzzNcCoiJ4gecMAB3XHccc89z/PpDyfpvDtO/Q6ce15/
+      Pt/Pr73uvvf93u04IiLIMEMx0gPca8hCGSMLZYwslDGyUMbIQhkjC2WMLJQxslDGyEIZIwtl
+      jCyUMbJQxshCGSMLZcxdL9S2txRnlz8C0esa6VHCQsWiiG1vKVqryoKum7LnYcLSKhatbgvR
+      24fOg5vQeWgLfHYrSBKhNpoRNysfY1/4EMqImBsTSEJ/0ym0Vn8E15kjED0ucCoNDMmZGFfw
+      CYyZTwBckPciMeDKnhI6syyLBI+TRTmmtXtP1tDJV8xUX5ZDbquFJL+PSBLJY6un+rIcqls0
+      iQY6mgfjBY+LGtfm0YmXTNRe8wXx/3YQEZHo81BH7SayFMZQ6zcrg/a767f8nSB6Xeis3YTx
+      b32FjBU/IiL1YXAqDcApoB+TgdTineDUWnQd2TaY46w7CALhgY0XET/7baiNZgCAQqOHOecN
+      JBWuRudPm8E7LgfsyWTL360oNHqkLt4BpcEYcF0dPRq6hAnw2s4NPjNOzUHMtDlQqLUBcwxJ
+      U0CiAL67FZpRSTetj4hQkkQ4ftkO2+4V4HvawKk0iHnwKSS/+jm05pSAOZ7mf2CrKkNf/VGQ
+      KECfmI6konLEPPR00D6cUh1UJgBIvn4Izi7oEtIGnyn1USFn9zs7QaIAhS4i4Pqwb3nJ70NT
+      RRHa95Ujfdk+zKwWMW2bA4bkTJx7/1G4G4/flNNvtaBlazHGFazC9N0eTN/lRvycYljXz7/9
+      QUhCzx/V8LTUwZSdF1aK4HKg/fs1iEybDl3ixCB1GRDuwSEJPDV8mktX9pQEXHeePkSnFqaQ
+      t7UhrNp8r50cv359S7MOdDTT2fdmkaUwhrqPVRFJYuiZRYHsBzaQZX4kNax8hvzOrpDxzLa8
+      +8KfOPFi4O01Jq8EY/NLIXpc8HU0Y9RjBQHjdIkTodDo4Xd2QpeYPmRPVZQJ3rYL4Q1IErqO
+      bEfL1sUwJGdiytpTQT9ersF329D05QL0nT+KpMI1MD+5EJxCGXqm8KYZmsj0LGR8UAulPjpo
+      jMR7Ibh70LguD1gXvJa/tz2snpxSHVac5PfhcuUSdB2uxJj8EiTkvjukGHfjX2j87HmoouIw
+      pbwOuvi0kPHXGNZDiVOqodAaMGFpFUzZ8+64nsR7wamGkEoS2r5dBcdvu5BavBOmrLlD1h2w
+      X8TF9QUwpExF6qIdUEXGhj3TsB5KSkM0NHHj0NfwO5N6fLcNUelZIWN6T9bAvr8cKa9vCEum
+      5OvHpc1vQh2bcMsygWEWqtDoETsjF73Hf8BAe2PAGMnXD9HbN2QtkkS0fbcakSGEkuhH189b
+      EHH/NJhmPhfWjG6rBW6rBQnPvnPLMoERuDaNfvxlaO8bj4aPZ1/9ViLwAAC+pw22vaU4XTwZ
+      Xlv9DTmCywHv5bNXY0nCgN2KpooiOOsOQqENfB8Ert4ZPZfqEDsjN2Tc9fSdPwa10RzyhQrF
+      sF/slfpoTFy+H/YDFWja+Br47laAJKiNZpiy5mJS2WFozeP/jzdEw5Q9D5e2LIKn5TRI4KGK
+      NCFuVj4mr775znoDRCBRQEvlErRULgkadv2BSoIfA20X8PeC+JClg50DHJH8d0aW3NM/jowE
+      /wG7//YEQB1Z7gAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='33' name='Worst Day (3)' width='64'>
+      iVBORw0KGgoAAAANSUhEUgAAAEAAAAAhCAYAAABpwa0hAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACrklEQVRoge2YTUgUYRzGn/1ep9W1tdi0xTVMsciPDglGKEbkMS916uMUdo+IIO9RWHgI
+      6tAxArsseakwBaFIJRfUNtLWEEXd1NFd13Vn5+PfrYhN05npfYnmOc3wvv9nHn7zvn/mHRsR
+      Ef5j2XkH4C0LAO8AvGUB4B2AtywAvAPwlgWAdwDesgDwDsBbFgDeAXjLAsD6gUp6FbHbzZh7
+      1gnS1F3VarKEePclxLsvQZMlU/KwBUAaFnvvAwBK22/AZnfsqtzu8qD88l1sfB1F4uVDkzIx
+      VCo2SNGOMK1Pvt9yTjYxTdOPOmjlbc+Wc8SRFxS9VkGZuU+GMzFbAZosYSFyD/6GNvgOn/j1
+      JWgqUhMDiHW24OOtJuAPP6n89WchlNdisfcBQJqxYIYR7lDJiQEavRqidPxD3tj65BB9vnOO
+      kuP9pKkKScuz264AIiJxKELRjjBtzk8aysVsBawMPoVQUQ8hXJs35qtqRPXNCIqOte64LxQe
+      OQWH4MfqcMRQLiYA5LUEUrFB7G1sh83hMsXTWViCotrTWIu+gpbb1O3DBEB2YQqalIEQrjPV
+      1193BlIiDnktoduDCYDkWB/cJSEUhGpM9RUq6kGqgo0vI7o9mPUAd6AMDq/PVE+H1wd3oMyQ
+      BxsAqvJX7UmVddeyAeBwIifOQ82mTbVVs2nkxHlDjZUJAHdJCEpahCbp79a/k5IWAQDOwoBu
+      DyYACg7WQJMykJZmTPXNLc/C5nDCE6zU7cEEgLe0CnaPgMzMmKm+ybE+eIKVcBUHdXs4Tcyz
+      pVzFQRQdbcbqcAT7W6/k7dmprgsQ3z3PL+z6eVl1vQeBk+d/3CvrK0iN92Nfy0XY3QX6wxn6
+      kN6FtjsL6NE/dxbwVTdhz6Hj+Pb6seETnCZLWHrzBP6GNngP6N//APAdq0uOZOVpDP8AAAAA
+      SUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='33' name='Yesterday Connects' width='64'>
+      iVBORw0KGgoAAAANSUhEUgAAAEAAAAAhCAYAAABpwa0hAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAADaklEQVRoge2Zb0wTZxzHP3cHBRQUGRREYBrpBOYfVAwahxobJlskmmCy7YVblmUmbMlY
+      nIYle0OyaWZMNo3GqItREzeN2cZ8oajZ2KRGJzLFCA1S5F8JjpaWQSmWttzt5WJo9cyuXpR+
+      X13y++V73+dzz5N7njyCoigKU1ii3gH0VhSA3gH0VhSA3gH0VhSA3gH0VhSA3gH0VhSA3gH0
+      VhSA3gH0VhSA3gH01pQHEPMsXnLfOUrF4QZ63V6qNxRQXfZq2N4el5f99W2sNaWzqTArZI+s
+      KFxpd/DV+bu09g8TlBVmz0zg87IC3l4xF0kUVGeLOIDxoMzuuhbeWJhJU48rZM+ErHCt08me
+      i1ZsDg9vLswM6ycrCnsvWTl1o5ua8kWUL8lCEgQsNgc7fryFpcPJ/reKiItRN7kjvgTONdvp
+      dXvZVpKLQOgvc6dviCNXbFSXFWCt2cjO1wvC+jW0OzhxvZOjW4upWJaDQRKRRIF1C9I5/eFr
+      WGwOztzsVp0vogB63V72/dbGZ6X5pCbGhe1blpPCqQ9WU5JrfOL0rW22syRrFkUvp0yqmYxJ
+      bFmew4lrnQyN+VVljBgAWVH49tc2lmanYM7L0MRzdDyIzeFhafYsYqXQ0dcvyODvkYd0DY6q
+      8owYgMvWB1ztcLK9ND9s2KfVNINEWmIc953hB2cyJiGJAnb3mCpPzQHIisLuuhYO1N+jfruZ
+      +WmJmnmLgsDBd1YwOh6kaFcdv98bwD8hA+D2+rnQ0k/l940MjPjw+oOqPDX/C9zocvFDYzff
+      bV1JUnys1vYkxcdy7N2VHLXY+ORMEw+GHwJgnBHPWpORj9a9QofTw3SDuqFpCuCfMT9fnr/L
+      5sJsiue9pKX1I0owSFSZ86gy502qtfYPIwiQPM2gyktTAJYOJ41dLv7sHOTQH+0he5p6XOy5
+      ZCUzOYHLVWYykxO0jED7wAgxoqh66WkKoHzxHAa/2RKy5vEFqDhswZyX/tid4P9RYELmp1u9
+      lOSmqQb7Qp0Fam/bae4bYtsaE6Kgbjv83AHw+AJ8evYvam/b8fgCAAyN+fn6Yitf/HKHmvLF
+      LJqTrNrvmRyGnqT3T17nXHPf5MLJ/x6Pv7eKTYVZTI+LoTQ/gyMNNj4+fRNfYIL4WIniean8
+      XLnmqQYPIESvx6e4/gWOxB3B3KHrvQAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='33' name='Yesterday Disconnects' width='64'>
+      iVBORw0KGgoAAAANSUhEUgAAAEAAAAAhCAYAAABpwa0hAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAFAElEQVRoge2Xa2xTZRjHf+d069ruQndhdpPhYIPBmDgWNCDIJSCIEjCMqFEXDYtcjGQY
+      hMQLRiAmapSQEElARRTxgjFRLkZnoDimBNhgyljZuDhg93WXtlu7nrbn9QPJzOy2dqSzH9z/
+      4/vcfvkn73neIwkhBP9jyeEGCLdGDAg3QLg1YkC4AcKtEQPCDRBujRgQboBwa8SAcAOEWyMG
+      hBsg3BoxYLgaOyylVLyYgf3SyeEa0UfWki/4c8MUepquDaluWAzwdnVw88BmRs9/nrgp84Zj
+      hJ+SHnqa2Emzqd27DtXdHXRdRMhJhErTkR1IcgSmpUV9Qr7uTlp/PYDVvB9XnQVVcSFFaNGn
+      ZZOy7BUSZz+FJGv8+jkspdQd2orDUorwKmgMccTlzCdl+SZiJ826nSfJjHnyLSxbF2ItOUjy
+      w6uD5A2xnHUWcWFtumg/d7jPuddpE5demyVq3ssXtkqz8LmdQgghfG6nsJYcFOdfGCOu7nxW
+      +JSef4pUn6j7drsoey5RNBfv6a1ROptF00+7Re2nL/vNby7eI/4oyhZKe0NQvCE34MZnm0TV
+      lnnC19PV51z1KsJjax2wzl5VIsoLU4St0tx7Zi39WpSvMgl71amg57vb6kXFS1mi5fi+oPJD
+      +g3wdDbTce4HEuc8gxwV3ScmaSKJiEsasDYqeRySrMFrawXA57LTdHQnyYvWEDt5dtAM2oRU
+      jHlLsJ78PKhvQUgN6L5Whup2Epc9Z8i1HlsLwudBjjLc7nX9PEp7AwkzVgy5V/z0pfQ0XQ1q
+      I4TUgK7q00QlpxMZnzKkOq/dyo2P12O4ZypxOfMAcP5VgTbeRFTS2CFz6NNykKMMuG5WBswN
+      mQE+lx3bxePE3bsAjT52wLyu6tOUFYziTL7EmXyJirXp2CvNTN5mZtKbxb1Xx1H9O93XyrFs
+      XUjbb9/gdbQBoCouWor3UFZg5PqHhQifx29GpPEuDOn30X72+4DcIV+D+tSJg8ZjsmYy/YAN
+      hIrHbqWr+jSNR3ZQ+8l60gt3kTAzHyQZSRNJ/IwVTNh4qE+9rNWTvGgNmmgjtXvXkTSvoN+3
+      hj5lIq7GmoC8obsCqgpCDT5fkokclUz8A8vJ3mZmbMG7XN9dSEf5MQB0KRNQrLfwuez9lhtz
+      F6NLmYC98uQgTL6ATKEzQJZBknE1BHbdT5JM0twCjHmPYjXvB6GiHzMZpa0Or6N90HkDydVY
+      A7Jm0BwIoQGyVk9EbCKe9vo7ayDJ6EyZeLttqB430ePzALBXmvtNF14PqttJRLTRL6YqLryO
+      drQJdwfmvjNaf0maSKLTc3HVX8bncvjFFetNVLdzwHqPvZWO88eIHp+HrNWjM2WQ+OATNHz3
+      dr/rzFbxM16Htd/773PaUdpuEZN5f0DukK7BmKyZuFtq8XQ0+sWsp77kwuo06r7agqvOgvAq
+      AAivgv3iCS5vW4RGF0PqildvF0gyqSvfQJuYRs07y+m6chah+hBehZZfPqJ2XxGmZRsxjMv1
+      m+W6VYnqdqIfmxOQOaRbIDpjOnKUAXtVCbp/bYPUxzdjnLaExsMfcHn7YjztDQjVhxShRWfK
+      wPRYEUlzC3ofQgARMfFkvX6Mph93ceX9lSht9UiShGFcLpkbDjJq6sJ+OTrKjqIzZaIzZQSG
+      DvqRHaQG+hf4rxTWfwGA0QtW4W6txXbxRKhbB6XO8qNIGg3GaY8Elf83TK9drqz5g88AAAAA
+      SUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='33' name='Yesterday Net Adds' width='64'>
+      iVBORw0KGgoAAAANSUhEUgAAAEAAAAAhCAYAAABpwa0hAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAEXElEQVRoge2YTU/bShSGHwfH4ISQho+WUKAF8aEKSKsgUSRQkBDdoP5NWMGORcXHAoRU
+      VIiggAIIEWBBEKREJmAcguO5iwrr5gKtFynWVfPsPD5z5p3X4zNjS0IIwV+Mx20BblM2wG0B
+      blM2wG0BblM2wG0BblM2wG0BblM2wG0BblM2wG0BblM2wG0BbvPXGyD/iaSappFIJDg+Pub6
+      +hohBIqi0NTURH9/P3V1dQ/6mKbJ9vY2iUQCXdcJBAK8f/+ezs5OZLlYpq7r7O7ucnBwQDab
+      xbIsZFnm5cuXfPjwgdevXyNJkiOtUqn/CJ2dnbGwsEBXVxcdHR0Eg0EkSeLm5oatrS0SiQTD
+      w8N0dnYWTejLly9UVFQwPDxMXV0d6XSaxcVFVFXl06dPVFZW2rEzMzOEw2F6enoIhUJ4PB5u
+      b2/Z399nbW2Nvr4+otGoMxNEicnn8+Lu7u7Re5ZlidXVVTE9PS1yuZzdvrKyIqampoRhGEXx
+      mqaJyclJsbGxYbfd3d2J29vbJ8ff29sTExMTQtM0R3pLXgO8Xu+DJXuPJEnU1tZiGAamaQKQ
+      z+c5PT2ltbWVqqqqovhgMEhDQwPpdNpuk2UZRVGeHD8YDCKEIJfLOdL77EXw6uoKWZbxeH4O
+      7fF48Hq9JctvGAZCCMc5n9WAVCrF9+/feffuHaqqAj+faEtLC8lkkmw2WxSvaRrpdJq2tjZH
+      +TVNY2VlhTdv3hAKhRz1KXkRvCcejxOPx+3rlpYWPn78SCgUerQ4CSHY2dnh69evFAoFFEUh
+      FovR3t7+aP5kMsn8/Lx9XV9fz+DgIOFw2PEOAH/QgHssy+L6+prj42O2trbw+XyMjo5SU1Nj
+      x+i6ztLSEkIIBgYG7F1geXmZmpoaRkZGnlzSQgh0XSeVSrG5uUmhUGBkZITGxkZH+v64Af/G
+      NE2Wlpb48eMHnz9/xufzYZoms7OzqKpKLBajoqLCjs/n88zNzeH3+4nFYnbdeAohBPF4nJ2d
+      HcbHxx89b/yXZ60BsiwzMDCAaZqkUikAMpkMmUyGrq6uoskDKIpCd3c3Jycn6Lr+2/ySJBGJ
+      RAgEAiSTSUeann0XUBQFn8+HYRjAz6cmSdKDyd/j8XiwLAvLshzl93q9+P1+O//vKKkBlmVx
+      dXXFr96q8/NzstmsvTxfvHiBqqrs7+8/6FcoFDg8PCQUCuH3+wG4vLz8Zf7Ly0vOz8959eqV
+      I80l/RYoFAosLi6Sy+WIRCI0NzejqiqSJNlH1Xg8Tm9vL+FwGIDKykqGhoaYnZ3FNE36+/sJ
+      BAJcXFzw7ds3NE1jbGzMPlytr69zcnJCJBLh7du3VFdXI0kSpmlydHTE6uoqTU1NdHR0ONJc
+      8iJoWRZHR0ckEgkymYx9IlMUhYaGBqLRKI2NjQ+2Kl3XWV9f5/DwEMMwqK6upr29nWg0WnTy
+      E0JwenrK9vY2Z2dn5HI5hBDIskxtbS2RSIS2tjb3Pob+b/z1/wP+AWHYphf8BR8sAAAAAElF
+      TkSuQmCC
+    </thumbnail>
+  </thumbnails>
+</workbook>
